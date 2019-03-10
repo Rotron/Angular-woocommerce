@@ -72,7 +72,7 @@
   <div class="nav-wrapper  ">
 
       <ul>
-        <li ><a  class="hide-on-med-and-down"  >
+        <li ><a (click)="openNav()" class="hide-on-med-and-down"  >
           <i class="material-icons">
           menu
         </i></a></li>
@@ -103,7 +103,7 @@
 
 
 <div id="main">
-  <button class="btn btn-block" (click)="openNav()" id="btn">Toggle</button>
+
 <router-outlet></router-outlet>
 
 </div>
