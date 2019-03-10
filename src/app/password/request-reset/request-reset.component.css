@@ -1,0 +1,14 @@
+.login-banner{
+  height: 35vh;
+  background-color: #388e3c;
+}
+#login-card{
+  margin-top: 40px;
+}
+#preloader{
+  top: 0px !important;
+  position: fixed !important;
+  z-index: 100000 !important;
+  margin-top: 0px !important;
+
+}

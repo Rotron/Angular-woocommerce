@@ -1,0 +1,29 @@
+<div id="preloader" *ngIf="isLoaded" class="progress">
+  <div class="indeterminate  red accent-3"></div>
+</div>
+<div class="login-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col l4"></div>
+      <div id="login-card" class="col l4 s12 card">
+        <h6>Request for a password reset</h6>
+
+        <form #RequestResetForm=ngForm (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="input-field col s12">
+              <input name="email" required [(ngModel)]="form.email" id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <button [disabled]="!RequestResetForm.valid" type="submit" style="width: 100%" class="btn red darken-1 btn-small ">Request for password reset <i class="material-icons right">navigate_next</i></button>
+          <br><br>
+
+        </form>
+      </div>
+      <div class="col l4"></div>
+    </div>
+  </div>
+</div>
+<section style="height: 75vh">
+
+</section>

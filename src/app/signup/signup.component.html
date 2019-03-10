@@ -1,0 +1,154 @@
+<div>
+  <div class="row">
+    <h5 class="center">Create an account</h5>
+    <form #signupForm=ngForm (ngSubmit)="signup()">
+    <div class="col l4 s12">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="card  darken-1">
+            <div class="card-content ">
+
+              <h6><b>Personal details</b></h6>
+
+                <div class="input-field ">
+                  <label for="first_name">First Name</label>
+                  <input name="first_name" required [(ngModel)]="user.first_name" id="first_name" type="text"
+                    class="validate">
+                    <!--<div style="height:25px;background-color:maroon;color:white !important" class="center" [hidden]="!error.first_name">-->
+                      <!--{{error.first_name}}-->
+                    <!--</div>-->
+                </div>
+                <div class="input-field ">
+                  <label for="last_name">Last Name</label>
+                  <input name="last_name" required [(ngModel)]="user.last_name" id="last_name" type="text"
+                         class="validate">
+                  <!--<div style="height:25px;background-color:maroon;color:white !important" class="center" [hidden]="!error.last_name">-->
+                    <!--{{error.last_name}}-->
+                  <!--</div>-->
+                </div>
+                <div class="input-field ">
+                  <label for="email">Email</label>
+                  <input name="email" required [(ngModel)]="user.email" id="email" type="text" class="validate">
+                  <!--<div style="height:25px;background-color:maroon;color:white !important" class="center" [hidden]="!error.email">-->
+                    <!--{{error.email}}-->
+                  <!--</div>-->
+                </div>
+                <div class="input-field ">
+                  <label for="username">Username</label>
+                  <input name="username" required [(ngModel)]="user.username" id="username" type="text"
+                    class="validate">
+                    <!--<div style="height:25px;background-color:maroon;color:white !important" class="center" [hidden]="!error.username">-->
+                      <!--{{error.username}}-->
+                    <!--</div>-->
+                </div>
+                <div class="input-field ">
+                  <label for="password">Password</label>
+                  <input name="password" required [(ngModel)]="user.password" id="password" type="password"
+                    class="validate">
+                    <!--<div style="height:25px;background-color:maroon;color:white !important" class="center" [hidden]="!error.password">-->
+                      <!--{{error.password}}-->
+                    <!--</div>-->
+                </div>
+                <div class="input-field ">
+                  <label for="password_confirmation">Confirm password</label>
+                  <input name="password_confirmation" required [(ngModel)]="user.password_confirmation" id="password_confirmation" type="password"
+                    class="validate">
+                </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col l4 s12">
+      <h6><b>Billing details</b></h6>
+      <div class="input-field ">
+        <label for="address1">Billing address line 1</label>
+        <input [(ngModel)]=" user.billing_address.address_1"  id="address1" name="billing_address1" class="validate">
+      </div>
+      <div class="input-field ">
+        <label for="address2">Billing address line 2</label>
+        <input [(ngModel)]=" user.billing_address.address_2"  id="address2" name="billing_address2" class="validate">
+      </div>
+      <label for="country">Country</label>
+      <div class="input-field">
+
+        <select name="billing_country" [(ngModel)]=" user.billing_address.country" id="country" class="browser-default">
+          <option value="" disabled selected>Choose your country</option>
+          <option value="Kenya">Kenya</option>
+        </select>
+      </div>
+      <label for="country">County</label>
+      <div class="input-field">
+
+        <select name="billing_address_state" [(ngModel)]=" user.billing_address.state" id="county" class="browser-default">
+          <option value="" disabled selected>Choose your county</option>
+          <option value="Nairobi">Nairobi</option>
+        </select>
+      </div>
+      <div class="input-field ">
+        <label for="city">City</label>
+        <input name="billing_address_state" [(ngModel)]=" user.billing_address.city"  id="city" type="text" class="validate">
+      </div>
+      <div class="input-field ">
+        <label for="postal">Postal code</label>
+        <input name="billing_address_postcode" [(ngModel)]=" user.billing_address.postcode"  id="postal" type="number" class="validate">
+      </div>
+      <div class="input-field ">
+        <label for="phone">Phone</label>
+        <input name="billing_address_phone" [(ngModel)]="user.billing_address.phone"  id="phone" type="tel" class="validate">
+      </div>
+      <p>
+        <label>
+          <input class="browser-default" (change)="setBillingToShipping()" type="checkbox" />
+          <span>Same for shipping details are same</span>
+        </label>
+      </p>
+    </div>
+    <div class="col l4 s12">
+      <h6><b>Shipping details</b></h6>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="address2">Shipping address line 1</label>
+        <input name="shipping_address_1" [(ngModel)]=" user.shipping_address.address_1"    class="validate">
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="address3">Shipping address line 2</label>
+        <input name="shipping_address_2" [(ngModel)]=" user.shipping_address.address_2"  id="address3"  class="validate">
+      </div>
+      <label for="country">Country</label>
+      <div *ngIf="!billing_shipping_same" class="input-field">
+
+        <select name="shipping_address_country" [(ngModel)]=" user.shipping_address.country"  class="browser-default">
+          <option value="" disabled selected>Choose your country</option>
+          <option value="Kenya">Kenya</option>
+        </select>
+      </div>
+      <label for="country">County</label>
+      <div *ngIf="!billing_shipping_same" class="input-field">
+
+        <select name="shipping_address_state" [(ngModel)]="user.shipping_address.state"  class="browser-default">
+          <option value="" disabled selected>Choose your county</option>
+          <option value="Nairobi">Nairobi</option>
+        </select>
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="city">City</label>
+        <input name="shipping_address_city" [(ngModel)]="user.shipping_address.city"   type="text" class="validate">
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="postal">Postal code</label>
+        <input name="shipping_address_postcode" [(ngModel)]=" user.billing_address.postcode"   type="number" class="validate">
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="phone">Phone</label>
+        <input name="shipping_address_phone" [(ngModel)]=" user.shipping_address.phone"   type="tel" class="validate">
+      </div>
+
+      <button [disabled]="!signupForm.valid" type="submit" class="waves-effect waves-light btn"><i
+        class="material-icons right">send</i>Create an account</button>
+    </div>
+      </form>
+    </div>
+</div>

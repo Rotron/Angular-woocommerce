@@ -1,0 +1,21 @@
+#user-banner{
+  height: 200px;
+  background-image: url("../../assets/breadcrumbs.jpg");
+}
+.avatar-container{
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  border-radius: 50%;
+  left: 180px;
+  top:225px;
+}
+#main{
+  height: auto;
+}
+#username2{
+  position: absolute;
+  left:370px;
+  color: white;
+  top:245px;
+}

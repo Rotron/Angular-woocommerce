@@ -1,0 +1,39 @@
+<div style="display: none;margin-top: 0px !important;" class="progress checkout_progress red">
+  <div class="indeterminate"></div>
+</div>
+<div style="width: 95% !important;margin: 0 auto;height: 100vh" class="container">
+  <h4>Manage orders</h4>
+  <table class="striped">
+    <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Order date</th>
+      <th>Status</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr *ngFor="let order of orders">
+
+      <td>#{{order.order_number}}</td>
+      <td>{{order.created_at | date: 'dd/MM/yyyy'}}</td>
+      <td> <span>{{order.status}}</span> </td>
+      <td>{{order.total}} for {{order.total_line_items_quantity}} item(s)</td>
+      <td>
+        <nav style="width: 60%" class="green">
+        <div class="nav-wrapper">
+
+          <ul class="right hide-on-med-and-down">
+            <li><a routerLink="/account/order/{{order.id}}"><i class="material-icons right">view_module</i>view</a></li>
+            <li><a href="/account/order/cancel"><i class="material-icons right">cancel</i>cancel</a></li>
+          </ul>
+        </div>
+      </nav>  </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

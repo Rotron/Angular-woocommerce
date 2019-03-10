@@ -1,0 +1,94 @@
+<div id="preloader" *ngIf="isLoaded" class="progress">
+  <div class="indeterminate  red accent-3"></div>
+</div>
+<div *ngIf="product_detail" class="row">
+  <div class="col s12 m6">
+    <div class="row">
+      <div *ngFor="let image of product_detail.images " class="col l6">
+        <div class="card">
+          <div class="card-image">
+            <img src="{{image.src}}">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <div  class="col s12 m6">
+    <div class="card">
+      <div class="card-content">
+        <div class="card-header">
+          <h5><b>{{product_detail.title}}</b></h5>
+          <div class="row">
+            <div class="col m6">
+              <button style="background-color: #ff3366;float: left !important;"  class="btn waves-effect waves-light" type="submit" name="action">
+                KSH &nbsp;{{product_detail.price}}
+              </button>
+              <div *ngIf="product_detail.average_rating==0">
+                <i style="float: left !important;color: #edb600" class="material-icons">
+                  star
+                </i>
+              </div>
+
+              <div *ngIf="product_detail.average_rating>=1">
+                <i style="float: left !important;color: #edb600" class="material-icons">
+                  star
+                </i>
+              </div>
+              <div *ngIf="product_detail.average_rating>=2">
+                <i style="float: left !important;color: #edb600" class="material-icons">
+                  star
+                </i>
+              </div>
+              <div *ngIf="product_detail.average_rating>=3">
+                <i style="float: left !important;color: #edb600" class="material-icons">
+                  star
+                </i>
+              </div>
+              <div *ngIf="product_detail.average_rating>=4">
+                <i style="float: left !important;color: #edb600" class="material-icons">
+                  star
+                </i>
+              </div>
+              <div *ngIf="product_detail.average_rating>=5">
+                <i style="float: left !important;" class="material-icons">star</i>
+              </div>
+              <br>
+              <br>
+            </div>
+            <div class="col m6">
+              <a (click)="addtoCart(product_detail,product_detail.id)" class="waves-effect waves-pink btn-flat">Add to cart  <i class="material-icons">shopping_cart</i></a>
+              <br>
+              <br>
+              <div class="divider"></div>
+              <h5>Categories</h5>
+              <div *ngFor="let cat of product_detail.categories">
+                <div style="float: left" class="chip">
+
+                  {{cat}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <blockquote>
+          <p [innerHTML]="product_detail.short_description">
+
+          </p>
+
+        </blockquote>
+        <div class="divider"></div>
+        <br>
+        <p [innerHTML]="product_detail.description"></p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

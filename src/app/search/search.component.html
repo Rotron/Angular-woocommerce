@@ -1,0 +1,60 @@
+<div id="preloader" *ngIf="isLoaded" class="progress">
+  <div class="indeterminate  red accent-3"></div>
+</div>
+<div class="row">
+
+  <div *ngFor="let product of products" class="col s12 m4 ">
+
+    <div style="height: 230px;cursor: pointer" class="card hoverable  horizontal product_image">
+      <div *ngFor="let image of product.images"    class="card-image">
+        <img style="max-height: 200px" *ngIf="image.position==0"   src="{{image.src}}">
+      </div>
+      <div class="card-stacked product_card">
+        <div style="padding: 3px !important;" class="card-content ">
+          <h6   class="header "><b>{{product.title}}</b></h6>
+
+          <p  [innerHTML]=" (product.short_description.length>50)? (product.short_description | slice:0:50)+'..':(product.short_description)"></p>
+
+
+          <div *ngIf="product.average_rating>=1">
+          <i style="float: left !important;color: #edb600" class="material-icons">
+          star
+          </i>
+          </div>
+          <div *ngIf="product.average_rating>=2">
+          <i style="float: left !important;color: #edb600" class="material-icons">
+          star
+          </i>
+          </div>
+          <div *ngIf="product.average_rating>=3">
+          <i style="float: left !important;color: #edb600" class="material-icons">
+          star
+          </i>
+          </div>
+          <div *ngIf="product.average_rating>=4">
+          <i style="float: left !important;color: #edb600" class="material-icons">
+          star
+          </i>
+          </div>
+          <div *ngIf="product.average_rating>5">
+          <i style="float: left !important;" class="material-icons">star</i>
+          </div>
+
+
+        </div>
+        <div class="card-action">
+          <div class="chip">
+            <i style="float: left !important;padding-top: 5px;" class="material-icons">
+              account_balance_wallet
+            </i>
+            Ksh &nbsp;{{product.price}}
+          </div>
+          <a routerLink="/product/{{product.id}}" style="background-color:#e6af4b !important;" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">
+            arrow_forward
+          </i></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

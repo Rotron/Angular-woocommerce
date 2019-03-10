@@ -1,0 +1,152 @@
+<div class="row">
+
+  <!--<div style="padding: 0px !important;" class="col hide-on-med-and-down l2">-->
+    <!--<app-side-bar></app-side-bar>-->
+  <!--</div>-->
+  <div style="padding: 0px !important;"  class="col s12 l12">
+    <div class="slider">
+      <ul class="slides">
+        <li>
+          <img src="../../assets/d.jpg"> <!-- random image -->
+          <div class="caption right-align">
+            <!--<h3>Right Aligned Caption</h3>-->
+            <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+          </div>
+        </li>
+        <li>
+          <img src="../../assets/a.jpg"> <!-- random image -->
+          <div class="caption right-align">
+            <!--<h3>Right Aligned Caption</h3>-->
+            <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+          </div>
+        </li>
+        <li>
+          <img src="../../assets/a.png"> <!-- random image -->
+          <div class="caption right-align">
+            <!--<h3>Right Aligned Caption</h3>-->
+            <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+          </div>
+        </li>
+        <li>
+          <img src="../../assets/b.jpg"> <!-- random image -->
+          <div class="caption right-align">
+            <!--<h3>Right Aligned Caption</h3>-->
+            <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+          </div>
+        </li>
+        <li>
+          <img src="../../assets/c.jpg"> <!-- random image -->
+          <div class="caption right-align">
+            <!--<h3>Right Aligned Caption</h3>-->
+            <!--<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>-->
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="ad-container">
+  <img src="https://www.masoko.com/media/wysiwyg/y7_strip.png">
+</div>
+<div id="preloader" *ngIf="isLoaded" class="progress">
+  <div style="background-color: #ff8700" class="indeterminate  red accent-3"></div>
+</div>
+
+
+<div class="row">
+
+  <div class="col l12">
+<section infiniteScroll (scrolled)="onScroll()" [infiniteScrollDistance]="2"  strategy="scrollingToBottom">
+
+
+  <!--List of all products in store-->
+  <div class="row">
+    <div *ngFor="let product of products" class="col s12 m3 ">
+
+      <div style="height: 230px;cursor: pointer" class="card hoverable  horizontal product_image">
+        <div *ngFor="let image of product.images"    class="card-image">
+          <img style="max-height: 200px" *ngIf="image.position==0"   src="{{image.src}}">
+        </div>
+        <div class="card-stacked product_card">
+          <div style="padding: 3px !important;" class="card-content ">
+            <h6   class="header "><b>{{product.title}}</b></h6>
+
+            <p  [innerHTML]=" (product.short_description.length>50)? (product.short_description | slice:0:50)+'..':(product.short_description)"></p>
+          </div>
+          <div class="card-action">
+            <div class="chip">
+              <i style="float: left !important;padding-top: 5px;" class="material-icons">
+                account_balance_wallet
+              </i>
+              Ksh &nbsp;{{product.price}}
+            </div>
+            <a routerLink="product/{{product.id}}" style="background-color:#ff8700 !important;" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">
+              arrow_forward
+            </i></a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let product of moreProducts" class="col s12 m3 ">
+
+      <div style="height: 230px;cursor: pointer" class="card hoverable horizontal product_image">
+        <div    class="card-image">
+          <img style="max-height: 200px"  src="{{product.featured_src}}">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content ">
+            <h6   class="header "><b>{{product.title}}</b></h6>
+
+            <p  [innerHTML]=" (product.short_description.length>30)? (product.short_description | slice:0:30)+'..':(product.short_description)"></p>
+
+
+
+
+          </div>
+          <div class="card-action">
+            <div class="chip">
+              <i style="float: left !important;padding-top: 5px;" class="material-icons">
+                account_balance_wallet
+              </i>
+              Ksh &nbsp;{{product.price}}
+            </div>
+            <a routerLink="product/{{product.id}}" style="background-color:#ff8700 !important;" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">
+              arrow_forward
+            </i></a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+<div *ngIf="moreProducts.length>0">
+    <div  *ngIf="isLoaded"  class="col s12 m4">
+      <div style="height: 230px;cursor: pointer" class="card">
+
+        <div class="card-content center">
+          <br><br><br>
+          <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+            </div>
+          </div>
+          <br>
+          Loading more products..
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+</section>
+  </div>
+</div>
+<!--<div class="ad-container">-->
+  <!--<img src="../../assets/e.png">-->
+<!--</div>-->

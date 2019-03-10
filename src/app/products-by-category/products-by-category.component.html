@@ -1,0 +1,47 @@
+<section>
+  <div class="center-align" *ngIf="isLoaded" >
+    <div style="margin-top: 120px" class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!--List of all products in store-->
+  <div *ngIf="products " class="row">
+    <div *ngFor="let product of products " class="col s12 m4 ">
+
+      <div style="height: 230px;cursor: pointer"  class="card hoverable horizontal product_image">
+        <div  *ngFor="let image of product.images"  class="card-image">
+          <img style="max-height: 200px" *ngIf="image.position==0" src="{{image.src}}">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content ">
+            <h6   class="header "><b>{{product.title}}</b></h6>
+
+            <p  [innerHTML]=" (product.short_description.length>50)? (product.short_description | slice:0:50)+'..':(product.short_description)"></p>
+
+          </div>
+          <div class="card-action">
+            <div class="chip">
+              <i style="float: left !important;padding-top: 5px;" class="material-icons">
+                account_balance_wallet
+              </i>
+              Ksh &nbsp;{{product.price}}
+            </div>
+            <a routerLink="/product/{{product.id}}" style="background-color: #ff3366" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">
+              arrow_forward
+            </i></a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

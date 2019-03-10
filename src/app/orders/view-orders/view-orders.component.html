@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col l6 s12">
+      <div class="card indigo darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Order details</span>
+          <table>
+            <thead>
+
+            </thead>
+
+            <tbody>
+            <tr>
+              <td>Order Number</td>
+              <td>#{{order.order_number}}</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>{{order.status}}</td>
+            </tr>
+            <tr>
+              <td>Created at</td>
+              <td>{{order.created_at | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+
+        </div>
+      </div>
+    </div>
+    <div class="col l6 s12">
+      <div style="background-color: #a10934 !important;" class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Order Particulars</span>
+          <table>
+            <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Quantity</th>
+              <th>Item Price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let item of order.line_items">
+              <td>{{item.name}}</td>
+              <td>{{item.quantity}}</td>
+              <td>{{item.subtotal}}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a href="#">Method of payment</a>
+          <span >
+            <a href="#">{{this.paymentdetails.method_title}}</a>
+          </span>
+
+        </div>
+        <button (click)="pay(this.paymentdetails.method_id)" style="width: 100% !important;" *ngIf="this.paymentdetails.paid==false" class="waves-effect  waves-light indigo btn"><i class="material-icons right">attach_money</i>Complete order</button>
+      </div>
+    </div>
+
+
+  </div>
+  <div *ngIf="this.paymentdetails.method_id=='mpesa'" class="card">
+
+    <div class="card-content">
+      <p>Follow the following steps to pay through MPESA</p>
+      <ul style="border-left: 0px !important;border-right: 0px !important;" class="collection">
+        <li  class="collection-item">Head to mpesa</li>
+        <li class="collection-item">Choose lipa na MPESA</li>
+        <li class="collection-item">Choose Buy Goods And Services </li>
+        <li class="collection-item">Enter till number <b>480736</b></li>
+        <li class="collection-item">Enter amount </li>
+        <li class="collection-item">Enter pin </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+<div >
+  <div style="display: none;margin-top: 0px !important;" class="progress checkout_progress red">
+    <div class="indeterminate"></div>
+  </div>
+  <div class="row">
+    <form #orderForm=ngForm (ngSubmit)="placeOrder()">
+    <h5 class="center">Customer details</h5>
+    <div class="col l4">
+      <div class="row">
+
+
+
+        <div class="col s12 m12">
+          <div class="card  darken-1">
+            <div class="card-content ">
+
+              <h6><b>Personal details</b></h6>
+              <div class="input-field ">
+                <label for="first_name">First Name</label>
+                <input [(ngModel)]=" newOrder.first_name" name="first_name" required  autofocus id="first_name" type="text" class="validate">
+              </div>
+              <div class="input-field ">
+                <label for="last_name">Last Name</label>
+                <input [(ngModel)]=" newOrder.last_name" name="last_name"  id="last_name"  class="validate">
+              </div>
+              <div class="input-field ">
+                <label for="email">Email</label>
+                <input  [(ngModel)]=" newOrder.email" name="email" id="email"  class="validate">
+              </div>
+              <div class="input-field ">
+                <label for="username">Username</label>
+                <input [(ngModel)]=" newOrder.username"  id="username" name="username" class="validate">
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col l4">
+      <h6><b>Billing details</b></h6>
+      <div class="input-field ">
+        <label for="address1">Billing address line 1</label>
+        <input [(ngModel)]=" newOrder.billing_address.address_1"  id="address1" name="billing_address1" class="validate">
+      </div>
+      <div class="input-field ">
+        <label for="address2">Billing address line 2</label>
+        <input [(ngModel)]=" newOrder.billing_address.address_2"  id="address2" name="billing_address2" class="validate">
+      </div>
+      <label for="country">Country</label>
+      <div class="input-field">
+
+        <select name="billing_country" [(ngModel)]=" newOrder.billing_address.country" id="country" class="browser-default">
+          <option value="" disabled selected>Choose your country</option>
+          <option value="Kenya">Kenya</option>
+        </select>
+      </div>
+      <label for="country">County</label>
+      <div class="input-field">
+
+        <select name="billing_address_state" [(ngModel)]=" newOrder.billing_address.state" id="county" class="browser-default">
+          <option value="" disabled selected>Choose your county</option>
+          <option value="Nairobi">Nairobi</option>
+        </select>
+      </div>
+      <div class="input-field ">
+        <label for="city">City</label>
+        <input name="billing_address_state" [(ngModel)]=" newOrder.billing_address.city"  id="city" type="text" class="validate">
+      </div>
+      <div class="input-field ">
+        <label for="postal">Postal code</label>
+        <input name="billing_address_postcode" [(ngModel)]=" newOrder.billing_address.postcode"  id="postal" type="number" class="validate">
+      </div>
+      <div class="input-field ">
+        <label for="phone">Phone</label>
+        <input name="billing_address_phone" [(ngModel)]="newOrder.billing_address.phone"  id="phone" type="tel" class="validate">
+      </div>
+      <p>
+        <label>
+          <input class="browser-default" (change)="setBillingToShipping()" type="checkbox" />
+          <span>Same for shipping details are same</span>
+        </label>
+      </p>
+    </div>
+    <div class="col l4">
+      <h6><b>Shipping details</b></h6>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="address2">Shipping address line 1</label>
+        <input name="shipping_address_1" [(ngModel)]=" newOrder.shipping_address.address_1"    class="validate">
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="address3">Shipping address line 2</label>
+        <input name="shipping_address_2" [(ngModel)]=" newOrder.shipping_address.address_2"  id="address3"  class="validate">
+      </div>
+      <label for="country">Country</label>
+      <div *ngIf="!billing_shipping_same" class="input-field">
+
+        <select name="shipping_address_country" [(ngModel)]=" newOrder.shipping_address.country"  class="browser-default">
+          <option value="" disabled selected>Choose your country</option>
+          <option value="Kenya">Kenya</option>
+        </select>
+      </div>
+      <label for="country">County</label>
+      <div *ngIf="!billing_shipping_same" class="input-field">
+
+        <select name="shipping_address_state" [(ngModel)]=" newOrder.shipping_address.state"  class="browser-default">
+          <option value="" disabled selected>Choose your county</option>
+          <option value="Nairobi">Nairobi</option>
+        </select>
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="city">City</label>
+        <input name="shipping_address_city" [(ngModel)]=" newOrder.shipping_address.city"   type="text" class="validate">
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="postal">Postal code</label>
+        <input name="shipping_address_postcode" [(ngModel)]=" newOrder.billing_address.postcode"   type="number" class="validate">
+      </div>
+      <div *ngIf="!billing_shipping_same" class="input-field ">
+        <label for="phone">Phone</label>
+        <input name="shipping_address_phone" [(ngModel)]=" newOrder.shipping_address.phone"   type="tel" class="validate">
+      </div>
+      <div class="input-field">
+        <h6>Select payment option</h6>
+        <select required [(ngModel)]=" paymentMethod" name="paymentMethod"  class="browser-default">
+          <option value="mpesa">Lipa na Mpesa</option>
+          <option value="cod">Cash on delivery</option>
+        </select>
+      </div>
+      <div class="card-action">
+        <button id="checkoutBtn" (click)="placeOrder()" class="btn btn-block  green" >Place order</button>
+        <br>
+
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

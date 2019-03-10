@@ -1,0 +1,35 @@
+<div class="login-banner">
+<div class="container">
+  <div class="row">
+    <div class="col l4"></div>
+    <div id="login-card" class="col l4 s12 card">
+      <h6>Login</h6>
+      <div style="height:25px;background-color:maroon;color:white !important" class="center" [hidden]="!error">
+        {{error}}
+      </div>
+<form (ngSubmit)="signin()" #loginForm=ngForm>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="email" required [(ngModel)]="form.email" id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="password" required [(ngModel)]="form.password" id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+<button [disabled]="!loginForm.valid" type="submit" style="width: 100%" class="btn red darken-1 btn-small ">Login <i class="material-icons right">navigate_next</i></button>
+      <br><br>
+  <a routerLink="/request-password-reset"> <small>Forgot password? Reset it here</small> </a>
+  <br><br>
+      </form>
+    </div>
+    <div class="col l4"></div>
+  </div>
+</div>
+</div>
+<section style="height: 75vh">
+
+</section>

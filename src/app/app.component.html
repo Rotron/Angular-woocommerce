@@ -1,21 +1,141 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<!--PLACE YOUR ADVERT HERE-->
+
+  <!--WELCOME SECTION-->
+
+    <!--<div  class="col s12 l12"><img class="banner-image" src="../assets/bg-header.jpg" alt=""></div>-->
+
+
+<div >
+
+    <nav style="background-color: #a10934 !important;" class="green darken-2 z-depth-0">
+      <div style="width: 90% !important;margin: 0 auto"  class="nav-wrapper ">
+        <a routerLink="" class="brand-logo center">Print Master</a>
+        <a (click)="openSide()" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a *ngIf="isLoggedIn" routerLink="/account/{{user.nicename}}">
+            {{(user.firstname==""?user.username:user.firstname)|| ""}}
+            <i class="material-icons left">
+              account_circle
+            </i>
+          </a></li>
+          <li><a *ngIf="isLoggedIn" (click)="logout($event)">Logout</a></li>
+          <li><a *ngIf="!isLoggedIn" routerLink="/login" class="btn btn-small red" href="">Login</a></li>
+          <li><a *ngIf="!isLoggedIn" routerLink="/signup" class="btn btn-small green" href="">Signup</a></li>
+        </ul>
+      </div>
+      <a style="background-color:#e6af4b !important;" routerLink="/cart" class="btn-floating btn-large halfway-fab waves-effect waves-light teal">
+        <i class="material-icons">shopping_cart</i>
+      </a>
+    </nav>
+
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
+<ul    class="sidenav" id="mobile-menu">
+  <div style="padding: 10px" class="mobile-banner grey lighten-5">
+
+    <a (click)="closeSide()" routerLink="" class="brand-logo center"><img style="max-height: 55px" src="../assets/media/index1/logo.png" alt=""></a>
+    <div style="background-image: url('../assets/user.jpg');background-size: cover" id="userAvatar"></div>
+  </div>
+  <li><a (click)="closeSide()" *ngIf="loggedIn" routerLink='/account/{{(user.firstname==""?user.username:user.firstname)|| ""}}'>{{(user.firstname==""?user.username:user.firstname)|| ""}}</a></li>
+  <li><a (click)="closeSide()" *ngIf="loggedIn" (click)="logout($event)">Logout</a></li>
+  <li><a (click)="closeSide()" *ngIf="!loggedIn" routerLink="/login" class="btn btn-small red" href="">Login</a></li>
+  <li><a (click)="closeSide()" *ngIf="!loggedIn" routerLink="/signup" class="btn btn-small green" href="">Signup</a></li>
+  <div *ngFor="let cat of categories">
+    <li>
+      <a (click)="closeSide()" [innerHTML]="cat.name"  class="black-text" routerLink="/category/{{cat.slug}}"></a></li>
+  </div>
 </ul>
 
+<!--Side nav for larger screens-->
+<div class="side-nav-large">
+
+  <div class="side-header white-text ">
+    <br><br>
+     <h6 style="margin-top: 35px !important;">Categories</h6>
+
+  </div>
+  <div style="margin-top: 5px">
+
+  <ul style="border: 0px !important;" *ngFor="let cat of categories" class="collection">
+
+    <li  style="background-color: #ececec"  routerLink="/category/{{cat.slug}}" [innerHTML]="cat.name"  class="collection-item cat-item"></li>
+
+  </ul>
+  </div>
+</div>
+
+
+<nav style="background-color: #a10934 !important;"  class=" green darken-2 ">
+  <div class="nav-wrapper  ">
+
+      <ul>
+        <li ><a  class="hide-on-med-and-down"  >
+          <i class="material-icons">
+          menu
+        </i></a></li>
+        <li><a routerLink="">Categories</a></li>
+        <nav style="background-color: #a10934 !important;"  class="green darken-2 ">
+        <div style="width:50%;margin:0 auto" class="nav-wrapper">
+          <form>
+            <div class="input-field">
+
+              <input style="border-radius: 15px !important;" name="search" [(ngModel)]="searchQuery" (search)="onSearch($event)" placeholder="Search for products, categories etc " id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+        </nav>
+      </ul>
+
+
+    <!--<ul *ngFor="let cat of categories"   class="left hide-on-med-and-down">-->
+      <!--<li><a [innerHTML]="cat.name" routerLink="/category/{{cat.slug}}"></a></li>-->
+
+    <!--</ul>-->
+  </div>
+</nav>
+
+<ng-snotify></ng-snotify>
+
+
+<div id="main">
+  <button class="btn btn-block" (click)="openNav()" id="btn">Toggle</button>
 <router-outlet></router-outlet>
+
+</div>
+<!--<a routerLink="/cart"  data-position="bottom" data-tooltip="I am a tooltip" style="top:100px;right:0;background-color:-->
+<!--#e6af4b !important;position: fixed;z-index: 10000 !important;" class="btn-floating  btn-large waves-effect waves-light red z-depth-5">-->
+
+
+  <!--<i class="material-icons">shopping_cart</i></a>-->
+
+
+<!--<footer class="page-footer grey darken-4">-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col l6 s12">-->
+        <!--<h5 class="white-text">Footer Content</h5>-->
+        <!--<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>-->
+      <!--</div>-->
+      <!--<div class="col l4 offset-l2 s12">-->
+        <!--<h5 class="white-text">Links</h5>-->
+        <!--<ul>-->
+          <!--<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>-->
+          <!--<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>-->
+          <!--<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>-->
+          <!--<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="footer-copyright">-->
+    <!--<div class="container">-->
+      <!--© 2014 Copyright Text-->
+      <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</footer>-->

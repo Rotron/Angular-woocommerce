@@ -1,0 +1,83 @@
+<main id="main">
+<div id="user-banner">
+
+   <div style="z-index: 10000 !important; background-image: url('../../assets/user.jpg');background-size: contain"  class="avatar-container"></div>
+  <h4 id="username2" style="margin-top: 0px !important;">{{(userdetails.username=='' ?userdetails.username:userdetails.username)|| ''}}</h4>
+</div>
+  <div style="width: 95% !important;margin: 0 auto" class="container">
+
+      <div class="row">
+        <div class="col l3 card">
+
+        </div>
+        <div class="col l9">
+          <div  class="card hoverable">
+            <div class="card-content">
+              <div class="card-title">Dashboard</div>
+              <p>Hello, <b>{{(userdetails.username=='' ?userdetails.username:userdetails.username)|| ''}}</b>
+              &nbsp;Not {{(userdetails.username=='' ?userdetails.username:userdetails.username)|| ''}} ?
+                <a href="">Logout.</a>
+              </p>
+              <p>
+                From your account dashboard you can view your recent orders, manage your shipping and billing addresses and edit your password and account details.
+              </p>
+              <div class="row">
+                <div class="col l6">
+                  <div style="cursor: pointer" routerLink="/account/{{(userdetails.nicename=='' ?userdetails.nicename:userdetails.nicename)|| ''}}/orders" class="card blue-grey darken-1">
+                    <div class="card-content center white-text">
+                      <i class="material-icons">shopping_cart</i>
+                      <br>
+                      <span class="card-title">Orders</span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col l6">
+                  <div class="card blue-grey darken-1">
+                    <div class="card-content center white-text">
+                      <i class="material-icons">
+                        cloud_download
+                      </i>
+                      <span class="card-title">Downloads</span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col l6">
+                  <div class="card blue-grey darken-1">
+                    <div class="card-content center white-text">
+                      <i class="material-icons">
+                        add_location
+                      </i>
+                      <span class="card-title">Addresses</span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col l6">
+                  <div class="card blue-grey darken-1">
+                    <div class="card-content center white-text">
+                      <i class="material-icons">
+                        account_circle
+                      </i>
+                      <span class="card-title">Account details</span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col l6">
+                  <div class="card blue-grey darken-1">
+                    <div class="card-content center white-text">
+                      <span class="card-title">Logout</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>>
+
+  </div>
+</main>
